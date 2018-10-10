@@ -9,10 +9,20 @@
  *       b otherwise
  */
 
+/**solution: from open source
+ * Not(in=sel, out=notsel);
+ * And(a=notsel, b=a, out=sela);
+ * And(a=sel, b=b, out=selb);
+ * Or(a=sela, b=selb, out=out);
+ */
+
 CHIP Mux {
     IN a, b, sel;
     OUT out;
 
     PARTS:
-    // Put your code here:
+    Not(in=sel, out=notS);
+    And(a=a, b=notS, out=AnotS);
+    And(a=sel, b=b, out=Bsel);
+    Or(a=AnotS, b=Bsel, out=out);
 }

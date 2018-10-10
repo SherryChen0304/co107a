@@ -8,10 +8,21 @@
  * out = not (a == b)
  */
 
+/**solution: from open source
+ * Or(a=a, b=b, out=aorb);
+ * Nand(a=a, b=b, out=anandb);
+ * And(a=aorb, b=anandb, out=out);
+ */
+ 
+
 CHIP Xor {
     IN a, b;
     OUT out;
 
     PARTS:
-    // Put your code here:
+    Not(in=a, out=notA);
+    Not(in=b, out=notB);
+    And(a=a, b=notB, out=AnotB);
+    And(a=notA, b=b, out=BnotA);
+    Or(a=AnotB, b=BnotA, out=out);
 }

@@ -8,6 +8,10 @@
  * out = not in
  */
 
+/**solution: from ccc && open source
+ * Nand(a=in, b=in, out=out);
+*/
+
 CHIP Not {
     IN in;
     OUT out;

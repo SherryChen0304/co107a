@@ -9,11 +9,21 @@
  *       0 otherwise
  */
 
+ /**solution1: from ccc
+ * Nand(a=a, b=b, out=AnandB);
+ * Nand(a=AnandB, b=AnandB, out=out);
+*/
+
+/**solution2: from open source
+ * Nand(a=a, b=b, out=nand);
+ * Not(in=nand, out=out);
+*/
+
 CHIP And {
     IN a, b;
     OUT out;
 
     PARTS:
     Nand(a=a, b=b, out=AnandB);
-    Nand(a=AnandB, b=AnandB, out=out);
+    Not(in=AnandB, out=out);
 }
