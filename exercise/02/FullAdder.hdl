@@ -7,11 +7,23 @@
  * Computes the sum of three bits.
  */
 
+/**solution: from open source
+ * HalfAdder(a=a, b=b, sum=sumab, carry=carryab);
+ * HalfAdder(a=sumab, b=c, sum=sum, carry=carryabc);
+ * Or(a=carryab, b=carryabc, out=carry);
+ */
+
 CHIP FullAdder {
     IN a, b, c;  // 1-bit inputs
     OUT sum,     // Right bit of a + b + c
         carry;   // Left bit of a + b + c
 
     PARTS:
-    // Put you code here:
+    And(a=a, b=b, out=AB);
+    And(a=a, b=c, out=AC);
+    And(a=b, b=c, out=BC);
+    Or(a=AB, b=AC, out=ABorAC);
+    Or(a=ABorAC, b=BC, out=carry);
+    Xor(a=a, b=b, out=AxorB);
+    Xor(a=AxorB, b=c, out=sum);
 }
